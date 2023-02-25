@@ -79,34 +79,34 @@ namespace SortOrderDemo
         protected override void Update(GameTime gameTime)
         {
 
-            if (WasPressed(Buttons.A, Keys.A))
+            if (WasPressed(InputHandler.ButtonType.A, Keys.A))
                 blendMode = SpriteBlendMode.AlphaBlend;
-            if (WasPressed(Buttons.B, Keys.B))
+            if (WasPressed(InputHandler.ButtonType.B, Keys.B))
                 blendMode = SpriteBlendMode.Additive;
-            if (WasPressed(Buttons.X, Keys.X))
+            if (WasPressed(InputHandler.ButtonType.X, Keys.X))
                 blendMode = SpriteBlendMode.None;
 
-            if (WasPressed(Buttons.LeftShoulder, Keys.D1))
+            if (WasPressed(InputHandler.ButtonType.LeftShoulder, Keys.D1))
                 sortMode = SpriteSortMode.BackToFront;
-            if (WasPressed(Buttons.RightShoulder, Keys.D2))
+            if (WasPressed(InputHandler.ButtonType.RightShoulder, Keys.D2))
                 sortMode = SpriteSortMode.FrontToBack;
-            if (WasPressed(Buttons.LeftStick, Keys.D3))
+            if (WasPressed(InputHandler.ButtonType.LeftStick, Keys.D3))
                 sortMode = SpriteSortMode.Deferred;
-            if (WasPressed(Buttons.RightStick, Keys.D4))
+            if (WasPressed(InputHandler.ButtonType.RightStick, Keys.D4))
                 sortMode = SpriteSortMode.Immediate;
-            if (WasPressed(Buttons.Y, Keys.D5))
+            if (WasPressed(InputHandler.ButtonType.Y, Keys.D5))
                 sortMode = SpriteSortMode.Texture;
 
 
             base.Update(gameTime);
         }
 
-        private bool WasPressed(Buttons buttonType, Keys keys)
+        private bool WasPressed(InputHandler.ButtonType buttonType, Keys keys)
         {
             return (WasPressed(0, buttonType, keys));
         }
 
-        private bool WasPressed(int playerIndex, Buttons buttonType,
+        private bool WasPressed(int playerIndex, InputHandler.ButtonType buttonType,
             Keys keys)
         {
             if (input.ButtonHandler.WasButtonPressed(playerIndex, buttonType) ||

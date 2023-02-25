@@ -26,7 +26,6 @@ class Program
             cp.InitializeTransformWithConstant();
             cp.InitializeTransformWithDivision();
             cp.InitializeTransformWithConstantReferenceOut();
-            cp.TransformVectorByReference();
             cp.TransformVectorByValue();
             cp.TransformVectorByReferenceAndOut();
             cp.TransformVectorByReferenceAndOutVectorAdd();
@@ -79,14 +78,6 @@ class Program
             Console.WriteLine();
             Console.WriteLine("——————————————————————");
             Console.WriteLine();
-
-            sw.Start();
-            for (i = 0; i < timesToLoop; i++)
-                cp.TransformVectorByReference();
-            sw.Stop();
-
-            PrintPerformance("      Reference", ref sw);
-            sw.Reset();
 
             sw.Start();
             for (i = 0; i < timesToLoop; i++)

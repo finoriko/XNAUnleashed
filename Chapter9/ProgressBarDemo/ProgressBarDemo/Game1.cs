@@ -94,6 +94,8 @@ namespace ProgressBarDemo
             base.Update(gameTime);
         }
 
+        Color color = Color.Green;
+
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
@@ -103,7 +105,7 @@ namespace ProgressBarDemo
             graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
          
             spriteBatch.Begin();
-            progressBar.Draw(gameTime, spriteBatch, Color.Green);
+            progressBar.Draw(gameTime, spriteBatch, color);
 
             spriteBatch.DrawString(font, "Loading ...", loadingPosition, Color.White);
             spriteBatch.End();

@@ -29,6 +29,11 @@ namespace SoundDemo
         private float currentVolume = 0.5f;
         private float value = 0;
 
+        //ADDED ---- TESTING
+        private SoundEffect example;
+        private SoundEffectInstance sei;
+        private Song frail;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -68,6 +73,12 @@ namespace SoundDemo
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+
+            //ADDED ---- TESTING
+            example = Content.Load<SoundEffect>(@"Sounds\attention");
+
+            frail = Content.Load<Song>(@"Sounds\jarsofclay - Frail");
+            
         }
 
         /// <summary>
@@ -165,6 +176,17 @@ namespace SoundDemo
                 value = input.GamePads[0].Triggers.Left * 100000;
 
             sound.SetGlobalVariable("SpeedOfSound", value);
+
+
+            //ADDED ---- TESTING
+            if (sei == null)
+                sei = example.Play();
+
+            if (input.KeyboardState.WasKeyPressed(Keys.F))
+                Microsoft.Xna.Framework.Media.MediaPlayer.Play(frail);
+
+
+
 
             base.Update(gameTime);
         }

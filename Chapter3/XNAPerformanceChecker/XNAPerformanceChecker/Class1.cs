@@ -34,6 +34,19 @@ namespace XNAPerformanceChecker
             cameraTarget = cameraPosition + transformedReference;
         }
 
+        public void TransformVectorByReference()
+        {
+            Matrix rotationMatrix = Matrix.CreateRotationY(
+                MathHelper.ToRadians(45.0f));
+            // Create a vector pointing the direction the camera is facing.
+            Vector3 transformedReference;
+            Vector3.Transform(ref cameraReference, ref rotationMatrix,
+                out transformedReference);
+            // Calculate the position the camera is looking at.
+            Vector3.Add(ref cameraPosition, ref transformedReference,
+                out cameraTarget);
+        }
+
         public void TransformVectorByReferenceAndOut()
         {
             Matrix rotationMatrix = Matrix.CreateRotationY(
@@ -42,6 +55,9 @@ namespace XNAPerformanceChecker
             Vector3 transformedReference;
             Vector3.Transform(ref cameraReference, ref rotationMatrix,
                 out transformedReference);
+            // Calculate the position the camera is looking at.
+            Vector3.Add(ref cameraPosition, ref transformedReference,
+                out cameraTarget);
         }
 
         public void TransformVectorByReferenceAndOutVectorAdd()
